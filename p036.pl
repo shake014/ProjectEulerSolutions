@@ -1,14 +1,28 @@
 #!/usr/bin/perl -w
 use 5.010;
-$sum=0;
-foreach $decnum (1..1000000){
+
+sub dectobin{
+	my($decnum)=shift;
 	my $binnum = unpack("B32", pack("N", $decnum)); 
 	$binnum =~ s!^0+(?=\d)!!;
-	@decnum=split('',$decnum); @decnum2=reverse(@decnum);
-	@binnum=split('',$binnum); @binnum2=reverse(@binnum);
-	push(@nums, $decnum) if @decnum~~@decnum2 && @binnum~~@binnum2;
+	return $binnum;
 }
-foreach(@nums){
-	$sum+=$_;
+
+sub palindromic {
+	my($num)=shift;
+	my $rnum=reverse $num;
+	if ($rnum==$num){
+		return 1;
+	} else {
+		return 0;
+	}
 }
-print $sum;
+
+my $sum=0;
+my $decnum;
+foreach $decnum (1..1000000){
+	my $binnum = dectobin($decnum);
+	$sum+=$decnum if palindromic($decnum) && palindromic($binnum);
+}
+
+print "PE 36:", $sum, "\n";
