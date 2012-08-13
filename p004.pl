@@ -1,5 +1,4 @@
 #!/usr/bin/perl -w
-use 5.010;
 use bignum;
 use strict;
 use warnings;
