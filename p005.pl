@@ -1,13 +1,11 @@
 #!/usr/bin/perl -w
-use bignum;
 use strict;
 use warnings;
 
 my $m=2520;
 sub divis{
 	my($m)=shift;
-	my $n;
-	foreach $n (11..20){
+	for (my $n=11;$n=20;$n++){
 		until($m%$n==0){
 			$m++;
 		}
