@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 sub divby3o5{
-    my(@nums)=@_;
+    my(@nums)=shift;
     my $sum = 0;
     my $a;
     foreach $a (@nums){
